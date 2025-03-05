@@ -22,3 +22,30 @@ Course reference : https://github.com/aspnetrun/run-devops
 <b> docker start [ContainerName] </b>  - To start container<br/>
 <b> docker build -t [imageName] . </b>  --> If we are in the docker file location in the terminal it will refers DockerFile to build the image in the given name<br/>
 <b> docker run -d -p 6069:8080 --name [containerName] [ExistingimageName]</b>  -> Create the container for that image<br/>  -> We can run the application stanalone without VS run
+
+
+### Pushing the image to Docker hub
+- We need to register on the Dockerhub
+- Need to create a repository, here I created "shoppingapp"
+- Open command prompt and goto the project directory and then login to Dockerhub using "docker login", this will ask username and password and allow you to login
+  ![image](https://github.com/user-attachments/assets/f6d347d7-1bf6-4bcf-99e3-90db6229bcbf)
+
+- Before push the image to Dockerhub we need to Tag the Image, as part of this process
+    - Get the latest image in release mode. If it in release more then the TAG will be "latest" else change the  VS project to Release mode than run in Docker mode OR run Docker build command
+    - docker tag [some charecters of ImageId] [Dockerhub repository Name]    -> ex : docker tag   e6852d newmancroos/shoppingapp
+      ![image](https://github.com/user-attachments/assets/846b088e-eaf6-41cb-b21f-a504209738e0)
+
+      ![image](https://github.com/user-attachments/assets/84809922-b125-4009-8952-66040e38d983)
+
+      After Tag the image it'll look lke this:
+      ![image](https://github.com/user-attachments/assets/3334a46b-9611-4f2e-9cd4-f21c5b951473)
+- Push Docker Image to Dockerhub
+    -docker push [imageName] : tag   -> here it is docker push newmancroos/shoppingapp:latest
+
+- After pushing to dockerhub, dockerhub repository looks like this:
+  ![image](https://github.com/user-attachments/assets/a7109e2f-cd62-41a5-956a-bad9d1194db2)
+
+  
+      
+
+
