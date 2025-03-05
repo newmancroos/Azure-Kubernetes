@@ -15,10 +15,10 @@ Course reference : https://github.com/aspnetrun/run-devops
 
 ### Docker Commands
 
-<b>docker images </b>   -> This displays images 
-<b>docker rmi [Part of Image Id] </b>  -> remove docker image by specifying couple of charaters of Imahe Id
-<b>docker ps </b> -> displays all running containers
-<b> docker stop [Part of container Id] </b>  -> To stop running container
-<b> docker start [ContainerName] </b>  - To start container
-<b> docker build -t [imageName] . </b>  --> If we are in the docker file location in the terminal it will refers DockerFile to build the image in the given name
-<b> docker run -d -p 8080:80 --name [containerName] [ExistingimageName]</b>  -> Create the container for that image
+<b>docker images </b>   -> This displays images <br/>
+<b>docker rmi [Part of Image Id] </b>  -> remove docker image by specifying couple of charaters of Imahe Id<br/>
+<b>docker ps </b> -> displays all running containers<br/>
+<b> docker stop [Part of container Id] </b>  -> To stop running container<br/>
+<b> docker start [ContainerName] </b>  - To start container<br/>
+<b> docker build -t [imageName] . </b>  --> If we are in the docker file location in the terminal it will refers DockerFile to build the image in the given name<br/>
+<b> docker run -d -p 8080:80 --name [containerName] [ExistingimageName]</b>  -> Create the container for that image<br/>
