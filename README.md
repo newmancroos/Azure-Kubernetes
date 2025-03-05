@@ -21,4 +21,4 @@ Course reference : https://github.com/aspnetrun/run-devops
 <b> docker stop [Part of container Id] </b>  -> To stop running container<br/>
 <b> docker start [ContainerName] </b>  - To start container<br/>
 <b> docker build -t [imageName] . </b>  --> If we are in the docker file location in the terminal it will refers DockerFile to build the image in the given name<br/>
-<b> docker run -d -p 8080:80 --name [containerName] [ExistingimageName]</b>  -> Create the container for that image<br/>
+<b> docker run -d -p 6069:8080 --name [containerName] [ExistingimageName]</b>  -> Create the container for that image<br/>  -> We can run the application stanalone without VS run
