@@ -67,3 +67,12 @@ Once deployment completed the resource page looks like this.
 Click the Default domain will take you to the actuual running web site.
 
 Here we created Web app using Docker Hub without CICD.
+
+
+Continue Integration Step:
+1. Need to link Github repository in DockerHub ShoppingApp repository
+2. In Azure Web app Deployment->Deployment Center, make Continus Deployment "On"
+3. Copy Wenhook Url from Deployment Center
+4. In Docker hub ShoppingApp repository select WebHoon tap and past the Wenhoop url
+5. Now If we change anything in the code and push it to Github, Dockerhub identitify the change and rebuild the image and call the webhooks url so that image will be deploy to the Webapp.
+        - Need to know: how to link Github with DockerHUb (It is available in Dockhub Pro) and how to specify DockerFile path in Dockhub build configuration
