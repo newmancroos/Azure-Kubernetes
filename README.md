@@ -46,6 +46,17 @@ Course reference : https://github.com/aspnetrun/run-devops
   ![image](https://github.com/user-attachments/assets/a7109e2f-cd62-41a5-956a-bad9d1194db2)
 
   
-      
+### Deploy and run a Containerized web app with Azure App Service
+
+-  Select <b>Web App for Containers</b> from Container menu and then create Web app using the Web app page
+
+  ![image](https://github.com/user-attachments/assets/e7d89f43-f715-4711-992e-ff3c58c4e28a)
+  
+
+![image](https://github.com/user-attachments/assets/c07b56dc-3234-4a0a-bd8c-b1d3817ad1b8)
+
+![image](https://github.com/user-attachments/assets/37d2e743-5215-4f58-badb-cd64368146f4)
+
+
 
 
