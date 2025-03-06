@@ -59,4 +59,4 @@ Course reference : https://github.com/aspnetrun/run-devops
 
 
 
-
+- Select Other container in the Container tap, it will ask to specify the Image, In my case it is <b>/newmancroos/shoppingapp</b>
