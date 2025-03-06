@@ -65,3 +65,5 @@ Once deployment completed the resource page looks like this.
 ![image](https://github.com/user-attachments/assets/51c77b92-ef69-4ba2-ab74-36096aec7c96)
 
 Click the Default domain will take you to the actuual running web site.
+
+Here we created Web app using Docker Hub without CICD.
