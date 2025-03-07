@@ -87,6 +87,16 @@ Continue Integration Step:
       - mongo db default port is 27017
     This command will run the mongo database in docker
     - docker logs -f shopping-mongo   -> display the logs
-    - docker exec -it shopping-mongo /bin/bash
--  docker exec -it shopping-mongo /bin/bash   -> this will start the interactive terminal
-       
+-  docker exec -it mongoContainer mongosh   -> this will start the interactive terminal
+                 - This will start iterative terminal
+-  show  dbs   -> list down all databases
+-  use CatalogDb  -> create CatalogDb database and switch to the dabase
+-  db.createCollection('Products')    -> This will create Product collection (document table)
+   <pre>
+-  db.Products.insertMany([{'Name':'Asus Laptop', 'Category':'Computers', 'Summary':'Summary', 'Description':'Description', 'ImageFile':'ImageFile', 'Price': 54.93},{'Name':'HP Laptop', 'Category':'Computers', 'Summary':'Summary', 'Description':'Description', 'ImageFile':'ImageFile', 'Price': 88.93}])
+-  </pre>
+This command will insert two records into Products table.
+- db.Products.find({}).pretty() -> listdown all the product
+- db.Products.remove({})   ->  will delete all the records
+
+-  show collections  -> listdown all tables
