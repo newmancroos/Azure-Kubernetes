@@ -100,3 +100,6 @@ This command will insert two records into Products table.
 - db.Products.remove({})   ->  will delete all the records
 
 -  show collections  -> listdown all tables
+
+
+### To work with Mongodb we need to install Nuget package MongoDb.Driver
