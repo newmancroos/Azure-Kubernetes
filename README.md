@@ -76,3 +76,17 @@ Continue Integration Step:
 4. In Docker hub ShoppingApp repository select WebHoon tap and past the Wenhoop url
 5. Now If we change anything in the code and push it to Github, Dockerhub identitify the change and rebuild the image and call the webhooks url so that image will be deploy to the Webapp.
         - Need to know: how to link Github with DockerHUb (It is available in Dockhub Pro) and how to specify DockerFile path in Dockhub build configuration
+
+
+### Running Mongo in our local docker
+
+- Check docker is running and list down all the running containers
+    docker ps
+- docker pull mongo   -> to pull mongo image
+- docker run -d -p 27017:27017 --name shopping-mongo  mongo
+      - mongo db default port is 27017
+    This command will run the mongo database in docker
+    - docker logs -f shopping-mongo   -> display the logs
+    - docker exec -it shopping-mongo /bin/bash
+-  docker exec -it shopping-mongo /bin/bash   -> this will start the interactive terminal
+       
