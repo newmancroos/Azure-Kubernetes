@@ -87,7 +87,7 @@ Continue Integration Step:
       - mongo db default port is 27017
     This command will run the mongo database in docker
     - docker logs -f shopping-mongo   -> display the logs
--  docker exec -it mongoContainer mongosh   -> this will start the interactive terminal
+-  docker exec -it [mongoContainerName] mongosh   -> this will start the interactive terminal
                  - This will start iterative terminal
 -  show  dbs   -> list down all databases
 -  use CatalogDb  -> create CatalogDb database and switch to the dabase
@@ -103,3 +103,20 @@ This command will insert two records into Products table.
 
 
 ### To work with Mongodb we need to install Nuget package MongoDb.Driver
+
+![image](https://github.com/user-attachments/assets/cb5b207a-c000-4e23-ba78-fd607631bd65)
+
+![image](https://github.com/user-attachments/assets/121d30ce-5faa-48e3-86e1-c9cedb81a53f)
+
+
+
+![image](https://github.com/user-attachments/assets/fb273144-94c3-4247-bcad-a18550f3021b)
+
+
+
+- Deploy all docker containers
+     * docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+     * If we have multiple environments we can have docker-compose.Staging, docker-compose.Prod and then can run <br>
+           <b>docker-compose -f docker-compose.yml -f docker-compose.Staging.yml up -d </b><br/>
+- Stop all containers
+     * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
