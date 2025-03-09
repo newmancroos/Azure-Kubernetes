@@ -103,3 +103,11 @@ This command will insert two records into Products table.
 
 
 ### To work with Mongodb we need to install Nuget package MongoDb.Driver
+
+![image](https://github.com/user-attachments/assets/cb5b207a-c000-4e23-ba78-fd607631bd65)
+
+![image](https://github.com/user-attachments/assets/121d30ce-5faa-48e3-86e1-c9cedb81a53f)
+
+
+
+![image](https://github.com/user-attachments/assets/fb273144-94c3-4247-bcad-a18550f3021b)
