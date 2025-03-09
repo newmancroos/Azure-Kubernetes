@@ -116,5 +116,7 @@ This command will insert two records into Products table.
 
 - Deploy all docker containers
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+     * If we have multiple environments we can have docker-compose.Staging, docker-compose.Prod and then can run <br>
+           <b>docker-compose -f docker-compose.yml -f docker-compose.Staging.yml up -d </b><br/>
 - Stop all containers
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
