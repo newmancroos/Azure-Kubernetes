@@ -87,7 +87,7 @@ Continue Integration Step:
       - mongo db default port is 27017
     This command will run the mongo database in docker
     - docker logs -f shopping-mongo   -> display the logs
--  docker exec -it mongoContainer mongosh   -> this will start the interactive terminal
+-  docker exec -it [mongoContainerName] mongosh   -> this will start the interactive terminal
                  - This will start iterative terminal
 -  show  dbs   -> list down all databases
 -  use CatalogDb  -> create CatalogDb database and switch to the dabase
