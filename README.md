@@ -111,3 +111,10 @@ This command will insert two records into Products table.
 
 
 ![image](https://github.com/user-attachments/assets/fb273144-94c3-4247-bcad-a18550f3021b)
+
+
+
+- Deploy all docker containers
+     * docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+- Stop all containers
+     * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
