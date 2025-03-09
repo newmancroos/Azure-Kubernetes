@@ -1,7 +1,11 @@
-﻿namespace Shopping.API.Models;
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace Shopping.API.Models;
 
 public class Product
 {
+    [BsonId]
+    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]  //Mongo generated Id will be saved to this field
     public string Id { get; set; } = default!;
     public string Name { get; set; } = default!;
     public string Category { get; set; } = default!;
