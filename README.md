@@ -169,4 +169,5 @@ To have a highly available control plane, you should have at least three control
 ### Kubernetes Commands
 
 - kubectl get all   -> display kubernetes services running
-- 
+![image](https://github.com/user-attachments/assets/c5c391ff-d7fe-42fe-b9f8-c4da01ccf0ce)
+
