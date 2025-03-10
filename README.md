@@ -150,7 +150,7 @@ Technically speaking, the Kubernetes control plane is a collection of processes 
 
 To have a highly available control plane, you should have at least three control plane nodes with the components replicated across all three nodes.
 </p>
-<b>Control Plane has the following Components</b>
+<b>Control Plane has the following Components</b><br/>
   - API Server -> <p>Provides an API that serves as the front end of a kubernetes control pane. It is responsible for handling external and internal request. API can be access via the Kubectl command-line interface or other tools like Kubeadm or via REST calls. </p><br/>
   - Scheduler -> <p>Responsible for scheduling PODs on a specific nodes to automated workflows and user define conditions.</p><br>
   -  Kubernetes Controller Manager -> <p>Is a Control loop that monitors and regulate the state of a Kubernetes cluster.</p><br/>
