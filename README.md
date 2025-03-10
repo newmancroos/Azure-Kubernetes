@@ -122,13 +122,40 @@ This command will insert two records into Products table.
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
 
 
-### Kubernetes (K8s)
+## Kubernetes (K8s)
 
+- Kubernetes lets you create, deploy, manage, and scale application containers across one or more host clusters. 
 - Open-Source container orchestration platform
 - Automated many of the manual process
 - Deploying, managing and Scaling containerized application
 - Monitors applications & Manages workloads across multiple machines
 
 
-  ## Kubernetes Components 
+
+  ### Kubernetes Components 
+
+![image](https://github.com/user-attachments/assets/cd7af4f4-3aeb-46c8-b925-066e57d5cd98)
+
+![image](https://github.com/user-attachments/assets/8e6cda51-8d65-4d20-9a2c-84bfbb69cc9f)
+
+<b>Kubernetes cluster has two main components</b>
+  - The Control Plane    -> Hosts the components used to manage the kubernetes cluster
+  - Worker Nodes    -> Can be Virtual machine or Physical machines. A Node hosts Pods, which run one or more containers.
+
+<b><u>The Control Plane</u></b>
+<p>
+The control plane includes components like the API Server, Scheduler, and Controller Manager. The control plane maintains communication with worker nodes. When you deploy applications on Kubernetes, you tell the control plane to start the application’s containers. The control plane then schedules the containers to run on the cluster’s nodes.
+
+Technically speaking, the Kubernetes control plane is a collection of processes that manages the state of a Kubernetes cluster. It receives information about cluster activity and requests, and uses this information to move cluster resources to the desired state. The control plane interacts with individual cluster nodes using the kubelet, an agent deployed on each node.
+
+To have a highly available control plane, you should have at least three control plane nodes with the components replicated across all three nodes.
+</p>
+<b>Control Plane has the following Components</b>
+  - API Server -> <p>Provides an API that serves as the front end of a kubernetes control pane. It is responsible for handling external and internal request. API can be access via the Kubectl command-line interface or other tools like Kubeadm or via REST calls. </p><br/>
+  - Scheduler -> <p>Responsible for scheduling PODs on a specific nodes to automated workflows and user define conditions.</p><br>
+  -  Kubernetes Controller Manager -> <p>Is a Control loop that monitors and regulate the state of a Kubernetes cluster.</p><br/>
+  - etcd - <p>A Key-Value database that contains data abou your cluster state and configuration. Etcd is fault tolerant and distributed.</p><br/>
+  - Cloud Controller Manager - <p>This component can be embed Clo;ud-specific control logic. ex. It can the cloud provider's load balance service. </p> <br/>
+
+
 
