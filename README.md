@@ -120,3 +120,15 @@ This command will insert two records into Products table.
            <b>docker-compose -f docker-compose.yml -f docker-compose.Staging.yml up -d </b><br/>
 - Stop all containers
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+
+
+### Kubernetes (K8s)
+
+- Open-Source container orchestration platform
+- Automated many of the manual process
+- Deploying, managing and Scaling containerized application
+- Monitors applications & Manages workloads across multiple machines
+
+
+  ## Kubernetes Components 
+
