@@ -151,14 +151,18 @@ Technically speaking, the Kubernetes control plane is a collection of processes 
 To have a highly available control plane, you should have at least three control plane nodes with the components replicated across all three nodes.
 </p>
 <b>Control Plane has the following Components</b><br/>
-  - API Server -> <p>Provides an API that serves as the front end of a kubernetes control pane. It is responsible for handling external and internal request. API can be access via the Kubectl command-line interface or other tools like Kubeadm or via REST calls. </p><br/>
-  - Scheduler -> <p>Responsible for scheduling PODs on a specific nodes to automated workflows and user define conditions.</p><br>
+  - <b>API Server</b> -> <p>Provides an API that serves as the front end of a kubernetes control pane. It is responsible for handling external and internal request. API can be access via the Kubectl command-line interface or other tools like Kubeadm or via REST calls. </p><br/>
+  - <b>Scheduler</b> -> <p>Responsible for scheduling PODs on a specific nodes to automated workflows and user define conditions.</p><br>
   -  Kubernetes Controller Manager -> <p>Is a Control loop that monitors and regulate the state of a Kubernetes cluster.</p><br/>
-  - etcd - <p>A Key-Value database that contains data abou your cluster state and configuration. Etcd is fault tolerant and distributed.</p><br/>
-  - Cloud Controller Manager - <p>This component can be embed Clo;ud-specific control logic. ex. It can the cloud provider's load balance service. </p> <br/>
+  - <b>etcd</b> - <p>A Key-Value database that contains data abou your cluster state and configuration. Etcd is fault tolerant and distributed.</p><br/>
+  - <b>Cloud Controller Manager</b> - <p>This component can be embed Clo;ud-specific control logic. ex. It can the cloud provider's load balance service. </p> <br/>
 
 <b><u>Worker Nodes</u></b><br/>
   Worker nodes has the following components<br/>
-- Nodes -> <p>Nodes are physical or virtual machines that run pods of a Kubernetes cluster. A cluster can scale upto 5000 nodes. To scale a cluster's capacity, you can add more nodes.</p><br/>
-- Pods -> <p>A Pod serves as a single application instance, and is considered the smallest unit in the object model of kubernetes.Each Pods consists of one or more tighly coupled cointainers and configurations that govern how the containers should run.To run statefull application, you can connect pods to persistent storage using kubernetes persitent valums.</p><br/>
-- Container Runtime Engine <p></p><br/>
+- <b>Nodes</b> -> <p>Nodes are physical or virtual machines that run pods of a Kubernetes cluster. A cluster can scale upto 5000 nodes. To scale a cluster's capacity, you can add more nodes.</p><br/>
+- <b>Pods</b> -> <p>A Pod serves as a single application instance, and is considered the smallest unit in the object model of kubernetes.Each Pods consists of one or more tighly coupled cointainers and configurations that govern how the containers should run.To run statefull application, you can connect pods to persistent storage using kubernetes persitent valums.</p><br/>
+- <b>Container Runtime Engine</b> <p>Each node comes with a container runtime engine which is responsible for running containers. Docker is a popular container runtime engine but other runtimes that are compliant with open cointainer initiative including CRI-O and RKT. </p><br/>
+- <b>Kubelt</b> <p>Each node contains a kubelt, which is a small application that can communicate with Kubernetes control plane. The Kubelet is responsible for enduring theat containers specified in pod configuration are running on a specific node and manage their lifecycle.</p><br/>
+- <b>kube-proxy</b><p>All compute nodes contains Kube-Proxy, a network proxy that facilitates Kubernetes networking services. It handle all network communications outside and inside the cluster, forwarding traffic or replying on the packet filtering layer of the operating system</p><br/>
+- <b>Container Networking</b> <p>Enables containers to communicate with hosts or other containers. Often achived by using the container networking interface (CNI)</p><br/>
+
