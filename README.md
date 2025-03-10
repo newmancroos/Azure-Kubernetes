@@ -157,5 +157,8 @@ To have a highly available control plane, you should have at least three control
   - etcd - <p>A Key-Value database that contains data abou your cluster state and configuration. Etcd is fault tolerant and distributed.</p><br/>
   - Cloud Controller Manager - <p>This component can be embed Clo;ud-specific control logic. ex. It can the cloud provider's load balance service. </p> <br/>
 
-
-
+<b><u>Worker Nodes</u></b><br/>
+  Worker nodes has the following components<br/>
+- Nodes -> <p>Nodes are physical or virtual machines that run pods of a Kubernetes cluster. A cluster can scale upto 5000 nodes. To scale a cluster's capacity, you can add more nodes.</p><br/>
+- Pods -> <p>A Pod serves as a single application instance, and is considered the smallest unit in the object model of kubernetes.Each Pods consists of one or more tighly coupled cointainers and configurations that govern how the containers should run.To run statefull application, you can connect pods to persistent storage using kubernetes persitent valums.</p><br/>
+- Container Runtime Engine <p></p><br/>
