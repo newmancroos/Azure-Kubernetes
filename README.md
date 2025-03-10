@@ -166,3 +166,7 @@ To have a highly available control plane, you should have at least three control
 - <b>kube-proxy</b><p>All compute nodes contains Kube-Proxy, a network proxy that facilitates Kubernetes networking services. It handle all network communications outside and inside the cluster, forwarding traffic or replying on the packet filtering layer of the operating system</p><br/>
 - <b>Container Networking</b> <p>Enables containers to communicate with hosts or other containers. Often achived by using the container networking interface (CNI)</p><br/>
 
+### Kubernetes Commands
+
+- kubectl get all   -> display kubernetes services running
+- 
