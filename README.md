@@ -378,7 +378,28 @@ To have a highly available control plane, you should have at least three control
 
   - Once I edit deployment manifest  the  and increase replica count to 2 and save, it automatically create an additional pod
   - ![image](https://github.com/user-attachments/assets/873d8e15-d2e7-4b73-ba4d-7361bfe4fadb)
-  - 
+ 
+  - Checking the log of the pod   -> kubectl logs [pod's Name]
+ 
+  ## Deploy example for Mongo and troubleshooting
+    - kubectl create deployment mongo-depl --image=mongo   ->  this will create mongo deployment
+    - kubectl get pod    -> this display a pod with pod name
+    - kubectl describ pod [Pod Name]   -> this will give detail about the selected pod.
 
+![image](https://github.com/user-attachments/assets/5ab85a5e-a42e-4560-8135-52db295b3925)
+
+- Event part of the describ result give the step by step pod creation and status.
+
+-We can also execute a pod in interactive terminal using the follwing command
+    <b>kubectl exec <Pod's Name> -it sh  </b>
+    * I can listdown all files using <b>ls</b> command
+    * I can check databases using <b>show dbs</b> command
+
+
+    - To remove all the deployment we can remove the deployment it will remove all the fies under it
+        * kubectl get all
+        * kubectl  get deployment
+        * kubectl delete deployment <Deployment Name>
+  
 
 
