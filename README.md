@@ -402,4 +402,5 @@ To have a highly available control plane, you should have at least three control
         * kubectl delete deployment <Deployment Name>
   
 
+## Declarative Way of   running Kubernetes
 
