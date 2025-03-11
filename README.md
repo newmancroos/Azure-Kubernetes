@@ -350,4 +350,8 @@ To have a highly available control plane, you should have at least three control
 - In Declarative way we have a configuration file that has set of commands to run
 
   
-- 
+- For example here we are running Nginx in imperative way
+  ![image](https://github.com/user-attachments/assets/74ad5848-f98d-497d-b089-f6fa8e8f98a8)
+
+  here <b>kubctl run swn-nginx --image=nginx </b> directly download and create pod and runs Nginx on the pod.
+
