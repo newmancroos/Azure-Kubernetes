@@ -358,3 +358,6 @@ To have a highly available control plane, you should have at least three control
 - Nginx web server default port is 80 we can forward it to 8080 and check the nginx server running as blow:
   ![image](https://github.com/user-attachments/assets/dbe98f9b-ce1b-4b45-8c12-64f9143fb9af)
   
+- It is imerative way, so we can delete this pod using the bleow command:
+- ![image](https://github.com/user-attachments/assets/d86ae7ca-a990-4776-b78e-e1d81e2cf6b4)
+  
