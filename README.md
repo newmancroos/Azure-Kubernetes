@@ -361,3 +361,24 @@ To have a highly available control plane, you should have at least three control
 - It is imerative way, so we can delete this pod using the bleow command:
 - ![image](https://github.com/user-attachments/assets/d86ae7ca-a990-4776-b78e-e1d81e2cf6b4)
   
+
+
+- In Declarative way we do the deployment
+  ![image](https://github.com/user-attachments/assets/ec8f8723-b058-438b-bb02-0fb9688312ef)
+
+  Here it created pod and also replicaset
+
+
+![image](https://github.com/user-attachments/assets/a208b4f3-967d-4e61-bef1-2bf10285a7f5)
+
+
+- We can edit the deployment file by giving the command <b>kubectl edit deployment nginx-depl </b>    ---> here nginx-depl is deployment[ name]
+
+  ![image](https://github.com/user-attachments/assets/40e71a6d-d579-4853-b0a7-df897044651e)
+
+  - Once I edit deployment manifest  the  and increase replica count to 2 and save, it automatically create an additional pod
+  - ![image](https://github.com/user-attachments/assets/873d8e15-d2e7-4b73-ba4d-7361bfe4fadb)
+  - 
+
+
+
