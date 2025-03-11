@@ -350,11 +350,11 @@ To have a highly available control plane, you should have at least three control
 - In Declarative way we have a configuration file that has set of commands to run
 
   
-- For example here we are running Nginx in imperative way
+- For example here we are running Nginx web server in imperative way
   ![image](https://github.com/user-attachments/assets/74ad5848-f98d-497d-b089-f6fa8e8f98a8)
 
   here <b>kubctl run swn-nginx --image=nginx </b> directly download and create pod and runs Nginx on the pod.
 
-- Nginx default port is 80 we can forward it to 8080 and check the nginx as blow:
+- Nginx web server default port is 80 we can forward it to 8080 and check the nginx server running as blow:
   ![image](https://github.com/user-attachments/assets/dbe98f9b-ce1b-4b45-8c12-64f9143fb9af)
   
