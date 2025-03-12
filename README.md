@@ -413,6 +413,6 @@ To have a highly available control plane, you should have at least three control
       * kubectl delete -f [sample.yml]
  
  - ### Creating Nginx deployment using yml file Declarative way
- - Creating Nginx
+   
    ![image](https://github.com/user-attachments/assets/bd639e9d-9b0a-4d5c-ae1b-3bad5760f54b)
 
