@@ -417,3 +417,18 @@ To have a highly available control plane, you should have at least three control
    ![image](https://github.com/user-attachments/assets/bd639e9d-9b0a-4d5c-ae1b-3bad5760f54b)
 
 ![image](https://github.com/user-attachments/assets/31f3db92-1bfc-4b9f-9cfa-c72489730632)
+
+![image](https://github.com/user-attachments/assets/4b11590f-027d-4d6f-b9a7-858d9ea08491)
+
+
+-If I change anything in the yml file, ex. I increase the replica by one and now replicats is 2 so I need to rerun the same command
+
+     <pre>kubectl apply -f .\nginx-depl.yml</pre>
+
+![image](https://github.com/user-attachments/assets/d74afa7c-5ad4-4562-aca8-8c5ce8e7e711)
+
+![image](https://github.com/user-attachments/assets/5767f136-ac60-432f-a666-dadf92a95373)
+
+
+
+
