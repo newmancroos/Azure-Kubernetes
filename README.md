@@ -404,3 +404,11 @@ To have a highly available control plane, you should have at least three control
 
 ## Declarative Way of   running Kubernetes
 
+- In declarative way we use yml file to create kubernetes and pods
+- ex:
+      * kubectl create -f [samepl.yml]
+      * kubectl apply - [sample.yml]  - if file name exist it will updating or creating
+      * kubctl describe   -> for truoble shooting
+      * kubectl exec  -> for creating interactive terminal
+      * kubectl delete -f [sample.yml]
+ 
