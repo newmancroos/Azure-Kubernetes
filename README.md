@@ -416,3 +416,4 @@ To have a highly available control plane, you should have at least three control
    
    ![image](https://github.com/user-attachments/assets/bd639e9d-9b0a-4d5c-ae1b-3bad5760f54b)
 
+![image](https://github.com/user-attachments/assets/31f3db92-1bfc-4b9f-9cfa-c72489730632)
