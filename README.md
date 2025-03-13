@@ -501,5 +501,6 @@ Now we can use Port-Forward and run the Kubernetes dashboad using the following 
 
 Now we need to create a service account and for that we need to create Bearer token to access Dashboad
 
-![image](https://github.com/user-attachments/assets/c46f4cc8-1545-43e2-85dc-2663c9a87036)
+![image](https://github.com/user-attachments/assets/0ea01b8f-f254-4344-9fe1-b210a62da4d8)
+
 
