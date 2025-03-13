@@ -491,4 +491,6 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 
 
 
+![image](https://github.com/user-attachments/assets/ab84fae4-4656-47cd-b848-3a7d8e2caad1)
+
 
