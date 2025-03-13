@@ -444,7 +444,8 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
     - In the deployment we can have separate yaml file one for Deployment yaml file and another for service yaml file or we can have a soingle file for deployment and service.<br/>
     - We specify 2 section in the deployment yaml file after deployment Kubernetes added antoher section called "Status"
        > <b>kubectl gt deployment [Deployment Name in our case Nginx-depl] -o yaml</b> will give the follwong output : <br/>
-       ![image](https://github.com/user-attachments/assets/fad2a251-ac5c-4fbb-96b9-6f622ee312e0)
+       
+        ![Untitled](https://github.com/user-attachments/assets/b4377c9b-1df3-4c0c-b45d-64e507f88caa)
 
        
 
