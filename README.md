@@ -448,7 +448,10 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
        ![image](https://github.com/user-attachments/assets/a49b8939-84a1-4137-ae30-10932b9b0ef5)
 
        
-
+<p>
+  Deployment file and Service file <b>Label</b> is the importent thing. Kubernetes use label as the common name during the communication. It matching the resources using lable name.
+  
+</p>
 
 
        
