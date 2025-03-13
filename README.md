@@ -469,11 +469,11 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
 
      ![image](https://github.com/user-attachments/assets/6851857a-bc1c-4f12-a9e4-f2b4437a8144)
 
-    If we run <b>kubectl get pod -o wide</b>  We get extra details about the pods.
-    
-    ![image](https://github.com/user-attachments/assets/48d55fc9-65cf-42e9-9a1e-3936e3a21f0e)
+     If we run kubectl get pod -o wide, we get extra details about the pode
+     If you noticed, service IP-Addresses and the Pods IP addresses are matched.
+     ![image](https://github.com/user-attachments/assets/48d55fc9-65cf-42e9-9a1e-3936e3a21f0e)
+      
 
-    If you notice, service IP addresses and pods IP addresses are matched.
 
      
 
