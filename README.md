@@ -480,15 +480,15 @@ https://github.com/kubernetes/dashboard
 
 Now days Kubernetes installation support only Heml installation, So install Helm before install Kubernetes dashboad from this url https://helm.sh/docs/intro/install/
 - Download Kelm zip file extract it in a directory and add that directory in the environment variable.
-- 
 
-- Install Kubernetes dashboad using helm command
-- <pre>
-# Add kubernetes-dashboard repository
+### Install Kubernetes dashboad using helm command
+  
+1. <b>Add kubernetes-dashboard repository</b><br/>
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-# Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+
+2. <b>Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart</b><br/>
 helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
-</pre>
+
 
 
 
