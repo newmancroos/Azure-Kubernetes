@@ -430,5 +430,13 @@ To have a highly available control plane, you should have at least three control
 ![image](https://github.com/user-attachments/assets/5767f136-ac60-432f-a666-dadf92a95373)
 
 
+## Create Service in Kubernetes
 
+Purpose of the Service is to provide a stable, network-accessible endpoints for a group of pods(Which all perform the same functions) by abstracting away the ephemeral nature of pod IP addresses and anabling load balancing and service discovery.
 
+  - <b>Abstraction of Pods: </b> Kubernetes service act as a logical abstraction, grouoping a set of Pods (which all perform the same function)  into a single resource. <br/>
+  - <b>Stable IP Address:</b> Each service is assigned a stable IP address and DNS name, which remain consistent regardless of the lifecyclr changes of the underlying pods.<br/>
+  - <b>Service Discovery:</b> Clients can use the Service's IP address or DNS name to access the Pods within the Service, without needing to know the specific IP addresses of the individual Pods. <br/>
+  - <b>Load Balancing :</b> Services can be configured to distribute traffic across multiple Pods, ensuring high availability and performance.  <br/>
+  - <b>Network Exposure: <br/> Services are used to expose network applications that are running as one or more Pods in your cluster  <br/>
+  
