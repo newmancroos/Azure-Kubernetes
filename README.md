@@ -497,3 +497,9 @@ Now we can use Port-Forward and run the Kubernetes dashboad using the following 
 <pre>
   kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
 </pre>
+
+
+Now we need to create a service account and for that we need to create Bearer token to access Dashboad
+
+![image](https://github.com/user-attachments/assets/c46f4cc8-1545-43e2-85dc-2663c9a87036)
+
