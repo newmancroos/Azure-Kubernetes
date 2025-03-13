@@ -453,6 +453,30 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
   
 </p>
 
-
+### Creating Nginx service using yml file Declarative way
        
+   - First we changed deployment yaml file port to 8080 becuase we are going to use port 80n for service.
+   - ![image](https://github.com/user-attachments/assets/7d94db43-40a4-4989-9841-68f32e9ebb09)
+
+     Then
+     <b>kubectl apply -f .\nginx-depl.yml</b> <br/>
+     then
+     <b> kubctl apply -f .\nginx-service.yml
+
+     Here the label for both deployment and service is ngonx and we said targetPort is 8080 so service match the deployment file using lable and targetport configuration.
+
+     ![image](https://github.com/user-attachments/assets/42a86e6b-89be-44b8-91f7-0ddd93a0faad)
+
+     ![image](https://github.com/user-attachments/assets/6851857a-bc1c-4f12-a9e4-f2b4437a8144)
+
+    Here we got the Ip address and port <b>10.1.0.28:8080 and 10.1.0.29:8080</b> <br/>
+    If we run <b>kubectl get pod -o wide</b>  We get extra details about the pods.<br/>
+
+    ![image](https://github.com/user-attachments/assets/ce8a30f9-52d0-498b-ad1c-f2ac1ab7ab69)
+
+    If you notice, service IP addresses and pods IP addresses are matched.
+
+     
+
+
 
