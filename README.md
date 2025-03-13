@@ -471,7 +471,7 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
 
     Here we got the Ip address and port <b>10.1.0.28:8080 and 10.1.0.29:8080</b> <br/>
     If we run <b>kubectl get pod -o wide</b>  We get extra details about the pods.<br/>
-
+    
     ![image](https://github.com/user-attachments/assets/48d55fc9-65cf-42e9-9a1e-3936e3a21f0e)
 
     If you notice, service IP addresses and pods IP addresses are matched.
