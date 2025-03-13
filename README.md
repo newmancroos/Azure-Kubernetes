@@ -440,3 +440,11 @@ Purpose of the Service is to provide a stable, network-accessible endpoints for 
   - <b>Load Balancing :</b> Services can be configured to distribute traffic across multiple Pods, ensuring high availability and performance.  <br/>
   - <b>Network Exposure: <br/> Services are used to expose network applications that are running as one or more Pods in your cluster  <br/>
   
+<b>Notes:</b> <br/>
+    - In the deployment we can have separate yaml file one for Deployment yaml file and another for service yaml file or we can have a soingle file for deployment and service.<br/>
+    - We specify 2 section in the deployment yaml file after deployment Kubernetes added antoher section called "Status"
+       > <b>kubectl gt deployment [Deployment Name in our case Nginx-depl] -o yaml</b> will give the follwong output : <br/>
+       ![image](https://github.com/user-attachments/assets/fad2a251-ac5c-4fbb-96b9-6f622ee312e0)
+
+       
+
