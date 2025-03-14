@@ -404,3 +404,119 @@ To have a highly available control plane, you should have at least three control
 
 ## Declarative Way of   running Kubernetes
 
+- In declarative way we use yml file to create kubernetes and pods
+- ex:
+      * kubectl create -f [samepl.yml]
+      * kubectl apply - [sample.yml]  - if file name exist it will updating or creating
+      * kubctl describe   -> for truoble shooting
+      * kubectl exec  -> for creating interactive terminal
+      * kubectl delete -f [sample.yml]
+ 
+ - ### Creating Nginx deployment using yml file Declarative way
+   
+   ![image](https://github.com/user-attachments/assets/bd639e9d-9b0a-4d5c-ae1b-3bad5760f54b)
+
+![image](https://github.com/user-attachments/assets/31f3db92-1bfc-4b9f-9cfa-c72489730632)
+
+![image](https://github.com/user-attachments/assets/4b11590f-027d-4d6f-b9a7-858d9ea08491)
+
+
+-If I change anything in the yml file, ex. I increase the replica by one and now replicats is 2 so I need to rerun the same command
+
+     <pre>kubectl apply -f .\nginx-depl.yml</pre>
+
+![image](https://github.com/user-attachments/assets/d74afa7c-5ad4-4562-aca8-8c5ce8e7e711)
+
+![image](https://github.com/user-attachments/assets/5767f136-ac60-432f-a666-dadf92a95373)
+
+
+## Create Service in Kubernetes
+
+Purpose of the Service is to provide a stable, network-accessible endpoints for a group of pods(Which all perform the same functions) by abstracting away the ephemeral nature of pod IP addresses and anabling load balancing and service discovery.
+
+  - <b>Abstraction of Pods: </b> Kubernetes service act as a logical abstraction, grouoping a set of Pods (which all perform the same function)  into a single resource. <br/>
+  - <b>Stable IP Address:</b> Each service is assigned a stable IP address and DNS name, which remain consistent regardless of the lifecyclr changes of the underlying pods.<br/>
+  - <b>Service Discovery:</b> Clients can use the Service's IP address or DNS name to access the Pods within the Service, without needing to know the specific IP addresses of the individual Pods. <br/>
+  - <b>Load Balancing :</b> Services can be configured to distribute traffic across multiple Pods, ensuring high availability and performance.  <br/>
+  - <b>Network Exposure: <br/> Services are used to expose network applications that are running as one or more Pods in your cluster  <br/>
+  
+<b>Notes:</b> <br/>
+    - In the deployment we can have separate yaml file one for Deployment yaml file and another for service yaml file or we can have a soingle file for deployment and service.<br/>
+    - We specify 2 section in the deployment yaml file after deployment Kubernetes added antoher section called "Status"
+       > <b>kubectl gt deployment [Deployment Name in our case Nginx-depl] -o yaml</b> will give the follwong output : <br/>
+       ![image](https://github.com/user-attachments/assets/6de27e21-0ba9-44cb-9dbc-80fba737faf7)
+       ![image](https://github.com/user-attachments/assets/a49b8939-84a1-4137-ae30-10932b9b0ef5)
+
+       
+<p>
+  Deployment file and Service file <b>Label</b> is the importent thing. Kubernetes use label as the common name during the communication. It matching the resources using lable name.
+  
+</p>
+
+### Creating Nginx service using yml file Declarative way
+       
+   - First we changed deployment yaml file port to 8080 becuase we are going to use port 80n for service.
+   - ![image](https://github.com/user-attachments/assets/7d94db43-40a4-4989-9841-68f32e9ebb09)
+
+     Then
+     <b>kubectl apply -f .\nginx-depl.yml</b> <br/>
+     then
+     <b> kubctl apply -f .\nginx-service.yml
+
+     Here the label for both deployment and service is ngonx and we said targetPort is 8080 so service match the deployment file using lable and targetport configuration.
+
+     ![image](https://github.com/user-attachments/assets/42a86e6b-89be-44b8-91f7-0ddd93a0faad)
+
+     ![image](https://github.com/user-attachments/assets/6851857a-bc1c-4f12-a9e4-f2b4437a8144)
+
+     If we run kubectl get pod -o wide, we get extra details about the pode
+     If you noticed, service IP-Addresses and the Pods IP addresses are matched.
+     ![image](https://github.com/user-attachments/assets/48d55fc9-65cf-42e9-9a1e-3936e3a21f0e)
+      
+
+## Kubernetes Dashboard
+
+https://github.com/kubernetes/dashboard
+
+Now days Kubernetes installation support only Heml installation, So install Helm before install Kubernetes dashboad from this url https://helm.sh/docs/intro/install/
+- Download Kelm zip file extract it in a directory and add that directory in the environment variable.
+
+### Install Kubernetes dashboad using helm command
+  
+1. <b>Add kubernetes-dashboard repository</b><br/>
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+
+2. <b>Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart</b><br/>
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+
+
+
+![image](https://github.com/user-attachments/assets/ab84fae4-4656-47cd-b848-3a7d8e2caad1)
+
+Now we can use Port-Forward and run the Kubernetes dashboad using the following command
+<pre>
+  kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+</pre>
+
+
+Now we need to create a service account and for that we need to create Bearer token to access Dashboad
+
+![image](https://github.com/user-attachments/assets/0ea01b8f-f254-4344-9fe1-b210a62da4d8)
+
+
+# Dashboad deploy using Kubectl : 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.0/aio/deploy/recommended.yaml
+
+Use this command to get the bearer token :<br/>
+<b>kubectl describe secret -n kube-system</b> <br/>
+here kude-system is the namespace to get all namespaces run <b>kubectl get namespace</b> <br/>
+
+- To access the dash board using proxy use the command<br/>
+<b>kubectl proxy </b>
+this will give us a url to browse the dashboad.<br/>
+Open the dashboard using this url <br/>
+
+<b>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</b>
+Now enter the bearer token and login.
+
+
