@@ -507,7 +507,8 @@ Now we need to create a service account and for that we need to create Bearer to
 # Dashboad deploy using Kubectl : 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.0/aio/deploy/recommended.yaml
 
-Use this command to get the bearer token : <b>kubectl describe secret -n kube-system</b> jhere kude-system is the namespace to get all namespaces run <b>kubectl get namespace</b> 
+Use this command to get the bearer token :<br/>
+<b>kubectl describe secret -n kube-system</b> jhere kude-system is the namespace to get all namespaces run <b>kubectl get namespace</b> 
 
 - To access the dash board using proxy use the command<br/>
 <b>kubectl proxy </b>
