@@ -520,3 +520,79 @@ Open the dashboard using this url <br/>
 Now enter the bearer token and login.
 
 
+
+## Visual Studio setup
+
+- Extension to install
+    * Docker
+    * Kubernestes (Microsoft)
+    * YAML (redhat)
+ 
+  And then We create Yaml file that contains both Deployment and service.
+  - One thing we need to notice here is, we may use sensitive data like username and password, we are going to create a separate yaml file to hold all these sensitive data.
+  - File we create for secret, Data should be in base 64 format so we need to convert the sensitive data to base64 data
+  - We can use <b>https://www.base64encode.org/ </b> site to convert normal string to base64 staring <br/>
+  - ex. username = username   ---> username = dXNlcm5hbWU=   <br/>
+        password= password    ----> password =  cGFzc3dvcmQ=  <br/>
+
+  Kubernetes should know the secret before it create any deployment or services that gooing to use the secret so we need to apply the secret before we appl deployment or service.
+  <b>Note : </b> Some time if default namespace not got set all namespace realted kubectl command will fail. so we need to set the default namespece using following commands
+  <pre>
+    kubectl get namespace
+    kubectl config set-context --current --namespace=kube-system 
+  </pre>
+
+### Deployment yaml
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: fdsfsf
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: fdsfds
+
+</pre>
+ ### secret yaml
+ <pre>
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: mongo-secret
+    type: Opaque
+    data:
+      mongo-root-username: dXNlcm5hbWU=
+      mongo-root-password: cGFzc3dvcmQ=
+
+ </pre>
+  so we need to apply secret now:
+  ![image](https://github.com/user-attachments/assets/e399ad49-4924-4572-aa1c-767ca8241abc)
+  
+
+  
