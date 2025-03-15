@@ -595,4 +595,4 @@ spec:
   ![image](https://github.com/user-attachments/assets/e399ad49-4924-4572-aa1c-767ca8241abc)
   
 
-  
+  Now we need to map the secret to the deployment yaml file so that deployment will know the username and password.
