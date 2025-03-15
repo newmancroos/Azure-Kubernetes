@@ -640,3 +640,7 @@ spec:
 
 
   </pre>
+
+- Now we can apply the changes by running below command:
+![image](https://github.com/user-attachments/assets/81a96747-0ca5-48e0-b173-0e91796744c2)
+
