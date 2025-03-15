@@ -624,7 +624,7 @@ spec:
                 memory: "64Mi"
                 cpu: "250m"
               limits:
-                memory: "128Mi"
+                memory: "500Mi"
                 cpu: "500m"
             env:
             - name: MONGO_INITDB_ROOT_USERNAME
@@ -639,8 +639,12 @@ spec:
                   key: mongo-root-password
 
 
+
   </pre>
 
 - Now we can apply the changes by running below command:
 ![image](https://github.com/user-attachments/assets/81a96747-0ca5-48e0-b173-0e91796744c2)
+
+
+![image](https://github.com/user-attachments/assets/1020f019-a3e9-4562-9975-681e57f3796a)
 
