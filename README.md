@@ -598,42 +598,45 @@ spec:
   Now we need to map the secret to the deployment yaml file so that deployment will know the username and password.
   This is the modified mongo.yaml file which refers the username and password from secret
   <pre>
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongo-deployment
-  labels:
-    app: mongodb
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mongodb
-  template:
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: mongo-deployment
       labels:
         app: mongodb
     spec:
-      containers:
-      - name: mongodb
-        image: mongo
-        ports:
-        - containerPort: 27017
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom:
-            name: mongo-secret
-            key: mongo-root-username
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom:
-            name: mongo-secret
-            key: mongo-root-password
+      replicas: 1
+      selector:
+        matchLabels:
+          app: mongodb
+      template:
+        metadata:
+          labels:
+            app: mongodb
+        spec:
+          containers:
+          - name: mongodb
+            image: mongo
+            ports:
+            - containerPort: 27017
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "128Mi"
+                cpu: "500m"
+            env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-password
+
 
   </pre>
