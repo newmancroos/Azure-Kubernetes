@@ -648,3 +648,68 @@ spec:
 
 ![image](https://github.com/user-attachments/assets/1020f019-a3e9-4562-9975-681e57f3796a)
 
+## Adding service definition
+
+We can add the service definition for the mongo db within the same yaml file, we need to put <b>---</b> to separate the definitions.
+Yaml file with deployment and service is as follows:
+<pre>
+      apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: mongo-deployment
+      labels:
+        app: mongodb
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: mongodb
+      template:
+        metadata:
+          labels:
+            app: mongodb
+        spec:
+          containers:
+          - name: mongodb
+            image: mongo
+            ports:
+            - containerPort: 27017
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "500Mi"
+                cpu: "500m"
+            env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-password
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mongo-service
+    spec:
+      selector:
+        app: mongodb
+      ports:
+      - protocol: TCP
+        port: 27017
+        targetPort: 27017
+</pre>
+
+Once agian run the kubectl apply command will create the service.
+
+![image](https://github.com/user-attachments/assets/8612d207-ddcd-457f-b0d1-44905fa6f8f5)
+
+
+
+
