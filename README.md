@@ -711,5 +711,13 @@ Once agian run the kubectl apply command will create the service.
 ![image](https://github.com/user-attachments/assets/8612d207-ddcd-457f-b0d1-44905fa6f8f5)
 
 
+To get the service end point we can run kubectl describe service [serviceName]  --> here service name is mongo-service.
+
+![image](https://github.com/user-attachments/assets/a2619f4d-f7aa-451e-a2e1-6c7ff96499e2)
+
+
+![image](https://github.com/user-attachments/assets/fae08480-fd59-4d5d-ab87-487d66311046)
+
+
 
 
