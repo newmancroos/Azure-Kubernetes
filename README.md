@@ -740,7 +740,8 @@ To get the service end point we can run kubectl describe service [serviceName]  
 
   ![image](https://github.com/user-attachments/assets/ea10237f-f959-4c24-95f5-000246088ff9)
 
-  ![image](https://github.com/user-attachments/assets/ff7b0fb0-95e1-43b5-8564-54c6a76cd90d)
+ ![image](https://github.com/user-attachments/assets/ec0d33f1-3f11-43bf-ac76-c67ef42381be)
+
   
 
 
