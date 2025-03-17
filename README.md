@@ -729,7 +729,23 @@ To get the service end point we can run kubectl describe service [serviceName]  
 - ![image](https://github.com/user-attachments/assets/190d32ba-af3e-44c9-b45d-da30e7f3d4c5)
 - This will tage existing image with our docker repository path and now we are ready to push the image before that we can change the image list
 - ![image](https://github.com/user-attachments/assets/2a16c2a2-4be5-4fe0-997f-00c0cb5dbdaa)
-- 
+- Create two repositories in the dockerhub
+     * shoppingclient
+     * shoppingapi
+- Push the images to dockerhub
+   ![image](https://github.com/user-attachments/assets/8682123d-fcc5-4795-ad6d-cda1552da481)
+
+- Now we can check the docker hub
+     ![image](https://github.com/user-attachments/assets/27adf03c-a911-4ff9-b012-1a1ea62c2da6)
+
+  ![image](https://github.com/user-attachments/assets/ea10237f-f959-4c24-95f5-000246088ff9)
+
+  ![image](https://github.com/user-attachments/assets/ff7b0fb0-95e1-43b5-8564-54c6a76cd90d)
+  
+
+
+
+
 
 
 
