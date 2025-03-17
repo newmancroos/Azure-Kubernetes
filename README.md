@@ -720,4 +720,16 @@ To get the service end point we can run kubectl describe service [serviceName]  
 
 
 
+## Pushing docker Shopping images to dockerHub
+
+- run <b> docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d </b> under shopping folder, this will create ShoppingApi, ShoppingClient  and shoppingdb images.
+- ![image](https://github.com/user-attachments/assets/afaa726c-7e8c-45a5-9271-baf2faa3944c)
+
+- Tage the image using following command
+- ![image](https://github.com/user-attachments/assets/190d32ba-af3e-44c9-b45d-da30e7f3d4c5)
+- This will tage existing image with our docker repository path and now we are ready to push the image before that we can change the image list
+- ![image](https://github.com/user-attachments/assets/2a16c2a2-4be5-4fe0-997f-00c0cb5dbdaa)
+- 
+
+
 
