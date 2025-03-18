@@ -746,8 +746,19 @@ To get the service end point we can run kubectl describe service [serviceName]  
 - Now we can delete the docker container and images because we are not going to use docker contaimner, we already push Images to dockerhub.
 - so ruun <b>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</b>  command this will  delete ShoppingClient and ShoppingApi containers.
 
-- 
+### Create ShoppingApi Deployment yaml file
 
+![image](https://github.com/user-attachments/assets/39751384-5079-4612-8ee2-2eccfc6fe403)
+
+
+
+   - What is NodePort?
+      If you notice in the above yaml file we specify service: spect: type = NodePort and we assigned 31000 for the nodePort.
+     ![image](https://github.com/user-attachments/assets/174aca73-a4ff-49f0-bae2-42888d3b1cca)
+
+     Normally we use Spect type : NodePort only for development purpose, we can call the service from our local machine but in the production environment we should use <b>Load Balancer or Cluster IP</b> so it is accessable within Kubernetes but development purpose we need to test it from local computer so we use NodePort.
+
+     
 
 
 
