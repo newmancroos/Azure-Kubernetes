@@ -743,7 +743,10 @@ To get the service end point we can run kubectl describe service [serviceName]  
  ![image](https://github.com/user-attachments/assets/ec0d33f1-3f11-43bf-ac76-c67ef42381be)
 
   
+- Now we can delete the docker container and images because we are not going to use docker contaimner, we already push Images to dockerhub.
+- so ruun <b>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</b>  command this will  delete ShoppingClient and ShoppingApi containers.
 
+- 
 
 
 
