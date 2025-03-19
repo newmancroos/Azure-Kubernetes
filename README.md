@@ -902,6 +902,89 @@ Now we can apply configmap and shoppingapi yaml
 
 
 
+## Create ShoppingClient Deployment yaml file
+
+Shopping client uses shoppingapi url, so we create shoppingapi configMap first before creating shoppngclient deployment/service yaml
+
+<pre>
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: shoppingapi-configmap
+  data:
+    shoppingapi-url: http://shoppingapi-service
+</pre>
+
+Now apply this changes using the following command<br/>
+<b>kubectl apply -f .\shoppingapi-configmap.yaml</b><br/>
+
+- Now shoppingclient.yaml as follows
+  <pre>
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: shoppingclient-deployment
+    labels:
+      app: shoppingclient
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: shoppingclient
+    template:
+      metadata:
+        labels:
+          app: shoppingclient
+      spec:
+        containers:
+        - name: shoppingclient
+          image: newmancroos/shoppingclient:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ShoppingAPIUrl
+            valueFrom:
+              configMapKeyRef:
+                name: shoppingapi-configmap
+                key: shoppingapi-url
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+  ---
+  
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: shoppingclient-service
+  spec:
+    type: LoadBalancer
+    selector:
+      app: shoppingclient
+    ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8080
+      nodePort: 30000
+  </pre>
+
+- Run <b> kubectl apply -f .\shoppingclient.yaml</b>
+
+![image](https://github.com/user-attachments/assets/55fe2681-dd90-408a-a515-8e1e219531f4)
+
+- Now when browsing localhost:30000 page not doisplayed.
+
+  ![image](https://github.com/user-attachments/assets/ffaeac4f-2844-4c7e-b716-5947da9417e6)
+
+  ## Trubleshooting:
+  
+
 
 
 
