@@ -759,6 +759,20 @@ To get the service end point we can run kubectl describe service [serviceName]  
 
      Normally we use Spect type : NodePort only for development purpose, we can call the service from our local machine but in the production environment we should use <b>Load Balancer or Cluster IP</b> so it is accessable within Kubernetes but development purpose we need to test it from local computer so we use NodePort.
 
+
+Now we can apply changes for shoppingapi.yaml
+
+![image](https://github.com/user-attachments/assets/854a559a-efc6-4f2d-97ff-301cb1a9ea76)
+
+![image](https://github.com/user-attachments/assets/c4eed139-06be-45f3-abab-01d30a7b9402)
+
+Shoppingapi is running and exposing 31000 so we can browse it in <b>http://localhost:31000</b>
+
+![image](https://github.com/user-attachments/assets/b771f31d-2fbd-4879-9ac9-33d132749972)
+
+
+
+
      
 
 
