@@ -821,8 +821,85 @@ Shoppingapi is running and exposing 31000 so we can browse it in <b>http://local
 
 
 
+- Note that in the shoppingapi yaml file we have specified the usernam and password fo the cosmos database in the connection string but it is not a good practice, so we need to move it to Config map of the kubernetes.
 
+### Config map yaml
+
+First we create <b>mongo-configmap.yaml</b> file with the following content
+<pre>
+  apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mango-configmap
+data:
+  connection_string: mongodb://username:password@mongo-service:27017
+</pre>
      
+And modify the <shoppingapi.yaml</b> as below
+<pre>
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: shoppingapi-deployment
+      labels:
+        app: shoppingapi
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: shoppingapi
+      template:
+        metadata:
+          labels:
+            app: shoppingapi
+        spec:
+          containers:
+          - name: shoppingapi
+            image: newmancroos/shoppingapi:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 8080
+            env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: DatabaseSettings__ConnectionStaring
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-configmap
+                  key: connection_string
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "500Mi"
+                cpu: "500m"
+    ---
+    
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: shoppingapi-service
+    spec:
+      type: NodePort
+      selector:
+        app: shoppingapi
+      ports:
+      - protocol: TCP
+        port: 8000
+        targetPort: 8080
+        nodePort: 31000
+</pre>
+
+![image](https://github.com/user-attachments/assets/51579a59-010b-4ef1-b78a-c0fce8557f97)
+
+Now we can apply configmap and shoppingapi yaml
+
+![image](https://github.com/user-attachments/assets/b65c1982-db8f-4982-b46a-375bc792a86f)
+
+
+![image](https://github.com/user-attachments/assets/1183dcc7-1a5f-4f51-ba77-b8e4458c8bc2)
+
 
 
 
