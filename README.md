@@ -747,8 +747,57 @@ To get the service end point we can run kubectl describe service [serviceName]  
 - so ruun <b>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</b>  command this will  delete ShoppingClient and ShoppingApi containers.
 
 ### Create ShoppingApi Deployment yaml file
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppingapi-deployment
+  labels:
+    app: shoppingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppingapi
+  template:
+    metadata:
+      labels:
+        app: shoppingapi
+    spec:
+      containers:
+      - name: shoppingapi
+        image: newmancroos/shoppingapi:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: DatabaseSettings__ConnectionStaring
+          value: mongodb://username:password@mongo-service:27017
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+---
 
-![image](https://github.com/user-attachments/assets/39751384-5079-4612-8ee2-2eccfc6fe403)
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingapi-service
+spec:
+  type: NodePort
+  selector:
+    app: shoppingapi
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8080
+    nodePort: 31000
+</pre>
 
 
 
