@@ -1027,6 +1027,11 @@ Now it is working fine.
 
 
 
+Everything working foine so we can delete all respource so that we can release the CPU memory
+
+![image](https://github.com/user-attachments/assets/77db336c-f9c7-455f-9d47-a10b1c3a8191)
+
+
 
 
 
