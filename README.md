@@ -1042,5 +1042,13 @@ Everything working foine so we can delete all respource so that we can release t
 ![image](https://github.com/user-attachments/assets/f6893014-d3bb-4909-8b1f-52aba685440c)
 
 
+## Azure Kubernetes Service (AKS)
 
+- Deploye a managed kubernetes
+- Reduces the complexcity and operational overhead
+- Azure handles critical tasks
+- maintenance for you
+- Free plan
+
+- 
 
