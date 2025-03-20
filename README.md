@@ -984,6 +984,42 @@ Now apply this changes using the following command<br/>
 
   ## Trubleshooting:
   
+ - First we check the Shoppingclient pod with <b>kubectl get pod <shoppingclientpodname> -o wide
+
+   ![image](https://github.com/user-attachments/assets/425ec8d5-87f4-4c2a-a7a7-58719d0646bf)
+
+   We don't find any problem here
+
+- Check the log of the shoppingclient pod
+
+  ![image](https://github.com/user-attachments/assets/ce8573f8-0116-4455-af9f-5b639ac4458e)
+
+  Here also we don;t find any problem
+
+  - Sice we are working on local machine Service type : <b>LoadBalancer</b> might noe work because we don;t have any LoadBalancer configuration. So lets change this to <b>NodePort</b> and try
+
+    ![image](https://github.com/user-attachments/assets/b0df0ea9-29a0-4e53-a7ae-607999ac4c2e)
+
+  *** Now we get the exception page when we brows to <b>http://localhost:30000</b>
+
+  ![image](https://github.com/user-attachments/assets/184c4b91-c45d-4adb-bda8-2df22f854867)
+
+
+  - In <b>shoppingapi-Configmap.yaml</b> we didn't specify any port number
+ 
+    ![image](https://github.com/user-attachments/assets/0db8feab-f6c8-41be-85bd-8b80c6115835)
+
+    So it is default taking <b>8080</b> but inside the kubernetes we expose it to <b>8000 </b>
+
+    So we need to change  <b>shoppingapi-Configmap.yaml</b> shoppingapi-url as below
+
+    ![image](https://github.com/user-attachments/assets/ddde415e-2a00-4046-8ec2-c88066f672ac)
+    
+
+
+
+
+
 
 
 
