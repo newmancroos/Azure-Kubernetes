@@ -1050,5 +1050,21 @@ Everything working foine so we can delete all respource so that we can release t
 - maintenance for you
 - Free plan
 
-- 
+
+##Notes:
+  - To get the kubernestes context we can use the following commands: <br>
+     * kubectl config get-context  --> Get all context<br/>  
+     * kubectl config current-context ---> Get current context <br/>
+     * kubectl config use-context [ContextName] --> Switch to a context  <br/>
+   
+
+## Preparing files to deploy to Azure Kubernetes
+
+Step1 : Creating the container Images
+<pre>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d</pre>
+
+   * This step is to create image, so after testing we can down the containers using
+     <pre>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</pre>
+
+
 
