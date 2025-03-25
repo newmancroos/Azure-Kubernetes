@@ -1066,5 +1066,17 @@ Step1 : Creating the container Images
    * This step is to create image, so after testing we can down the containers using
      <pre>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</pre>
 
+Step2 :
+ - We can use Azure portal to push images to Azure container registry and then deplpoy it to Kubernetes cluster OR
+    We can use Command line interface (CLI). We can install local intsalltion of Azure CLI (.
+   version >2.1) <br/>
+   https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?pivots=winget
+<br/>
+If it is correctly installed
+<pre>
+  az --version
+</pre>
+Will return the result <br/>
 
+   
 
