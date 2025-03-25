@@ -1060,13 +1060,13 @@ Everything working foine so we can delete all respource so that we can release t
 
 ## Preparing files to deploy to Azure Kubernetes
 
-Step1 : Creating the container Images
+<b>Step1 : Creating the container Images</b>
 <pre>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d</pre>
 
    * This step is to create image, so after testing we can down the containers using
      <pre>docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down</pre>
 
-Step2 :
+<b>Step2 :</b>
  - We can use Azure portal to push images to Azure container registry and then deplpoy it to Kubernetes cluster OR
     We can use Command line interface (CLI). We can install local intsalltion of Azure CLI (.
    version >2.1) <br/>
@@ -1078,5 +1078,46 @@ If it is correctly installed
 </pre>
 Will return the result <br/>
 
-   
+<b>Step3:</b><br/>
+Logion into azure
+<pre>az login</pre>
+
+<b>Step4:</b> <br/>
+ - Create resource group so that we can put all the related resources into this resource group
+<pre>
+  az group create --name myResourceGroup --location westeurope
+</pre>
+
+![image](https://github.com/user-attachments/assets/40d41a8c-1d5a-47e5-a5a6-a85cb196f354)
+
+<b>Step5:</b><br/>
+We are going to create <b>Azure Container Registry inside the Resource group we created</b>
+<pre>
+  az acr create --resource-group myResourceGroup  --name shoppingnewmanacr --sku Basic
+</pre>
+here sku is Conception model
+
+![image](https://github.com/user-attachments/assets/6cc4a5ee-6283-4051-829d-ca55370e84cc)
+
+<b>Step6:</b><br/>
+Before pushing the image we need to enable <b>admin Account</b>. Each container registry is contains one admin account but by default it is disabled.<br/>
+We need admin account to deploy container image from portal. Admin account will have full access so it is easy to push images and create containers in Azure Kubernetes.
+
+<pre>
+  az acr update -n shoppingnewmanacr --admin-enabled true
+</pre>
+
+We can also enable it using portal
+
+![image](https://github.com/user-attachments/assets/c03f8a26-34dc-4c42-aba1-1bd2191f7bc7)
+
+
+After execute az acr update command, admin user got enabled.
+
+![image](https://github.com/user-attachments/assets/fef8353a-e19e-486b-a692-a54cc9651473)
+
+
+
+
+
 
