@@ -1139,5 +1139,28 @@ After execute az acr update command, admin user got enabled.
   </pre>
 
 
+![image](https://github.com/user-attachments/assets/9668e42b-6e61-41cc-8e0f-cb3ce6e7024a)
+
+<b>Step 9: Push image to ACR</b><br/>
+It is the same command as Docker push to Dockerhub<br/>
+<pre>
+  docker push shoppingnewmanacr.azurecr.io/shoppingapi:v1
+  docker push shoppingnewmanacr.azurecr.io/shoppingclient:v1
+</pre>
+List the repositories as list:
+<pre>
+  az acr repository list --name shoppingnewmanacr --output table
+</pre>
+![image](https://github.com/user-attachments/assets/be0f0433-6845-47a5-865e-12638d7594d4)
+
+Display the Tags:
+<pre>
+  az acr repository show-tags --name shoppingnewmanacr --repository shoppingclient --output table
+  az acr repository show-tags --name shoppingnewmanacr --repository shoppingapi --output table
+</pre>
+
+![image](https://github.com/user-attachments/assets/62f64080-558e-4358-bb82-b8fa202beba1)
+
+
 
 
