@@ -1161,6 +1161,21 @@ Display the Tags:
 
 ![image](https://github.com/user-attachments/assets/62f64080-558e-4358-bb82-b8fa202beba1)
 
+![image](https://github.com/user-attachments/assets/cb531e66-6008-44b5-b9b9-6db020a24c34)
 
+<b>Step 10: Create Azure Kubernetes Cluster</b><br/>
 
+<pre>az aks create --resource-group myResourceGroup --name myAksCluster --node-count 1 --generate-ssh-keys --attach-acr shoppingnewmanacr</pre>
+
+Here we create Aks cluster and attach shoppingnewmanacr so that it can pull images from the ACR.
+
+<b>Note:</b>
+If you get "MissingSubscriptionRegistration" error run
+<pre>
+  az provider register --namespace Microsoft.ContainerService
+</pre>
+and then run 
+<pre>
+  az aks create --resource-group myResourceGroup --name myAksCluster --node-count 1 --generate-ssh-keys --attach-acr shoppingnewmanacr
+</pre>
 
