@@ -1117,6 +1117,26 @@ After execute az acr update command, admin user got enabled.
 ![image](https://github.com/user-attachments/assets/fef8353a-e19e-486b-a692-a54cc9651473)
 
 
+<b>Step 7: Login to acr</b><br/>
+<pre>az acr login --name shoppingnewmanacr</pre>
+
+![image](https://github.com/user-attachments/assets/13bbaf0c-26d6-44fb-b0e7-d35655c792fa)
+
+<b>Step 8: Before push image to ACR Tag the Images</b><br/>
+- Before push the images to ACR we need to tag with login server address of our ACR. <br/>
+- How to get login server address? <br/>
+   <pre>az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table</pre>
+
+   ![image](https://github.com/user-attachments/assets/bf762dac-707b-47cd-86fd-14e7750a6445)
+
+  In our case Login server address is <b>shoppingnewmanacr.azurecr.io</b> <br/>
+
+  Now we can tag our image with Login server address <br/>
+
+  <pre>
+    docker tag shoppingapi:latest shoppingnewmanacr.azurecr.io/shoppingapi:v1
+    docker tag shoppingclient:latest shoppingnewmanacr.azurecr.io/shoppingclient:v1
+  </pre>
 
 
 
