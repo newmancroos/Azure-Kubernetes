@@ -1179,3 +1179,32 @@ and then run
   az aks create --resource-group myResourceGroup --name myAksCluster --node-count 1 --generate-ssh-keys --attach-acr shoppingnewmanacr
 </pre>
 
+<b>Step 11:Connect Kubernetes cliuster to the local computer</b><br/>
+To run kubectlcommand against azure kubernetes we need to install <b>Azure aks cli</b>
+<pre>
+  az aks install-cli
+</pre>
+
+![image](https://github.com/user-attachments/assets/48fae45f-b34e-4c2c-8a58-bc22966b1586)
+
+- Now we need to connect the Cluster using <b>kubectl</b> <br/>
+Inorder to configure kubectl  to connect your kubernetes cluster, we use
+<pre>
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+</pre>
+
+![image](https://github.com/user-attachments/assets/bae10952-1c11-41cb-8cce-1c38766a9220)
+
+- To verify the connection to the Cluster we can check using this below command:
+  <pre>
+    kubectl get all
+  </pre>
+![image](https://github.com/user-attachments/assets/7f645758-f858-42c3-82f3-1acd250eb646)
+
+<pre>
+kubectl get nodes
+</pre>
+
+![image](https://github.com/user-attachments/assets/9e8f4f8d-865f-427a-96b3-73e816c1a9d5)
+
+
