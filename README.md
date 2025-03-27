@@ -1251,57 +1251,56 @@ In My case <br/>
   <u>shoppingapi.yaml</u>
   <pre>
   apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: shoppingapi-deployment
-    labels:
+kind: Deployment
+metadata:
+  name: shoppingapi-deployment
+  labels:
+    app: shoppingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
       app: shoppingapi
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+  template:
+    metadata:
+      labels:
         app: shoppingapi
-    template:
-      metadata:
-        labels:
-          app: shoppingapi
-      spec:
-        containers:
-        - name: shoppingapi
-          image: shoppingnewmanacr.azurecr.io/shoppingapi:v1
-          imagePullPolicy: IfNotPresent
-          imagePullSecret:
-          - name: acr-secret
-          ports:
-          - containerPort: 8080
-          env:
-          - name: ASPNETCORE_ENVIRONMENT
-            value: Development
-          - name: DatabaseSettings__ConnectionStaring
-            valueFrom:
-              configMapKeyRef:
-                name: mongo-configmap
-                key: connection_string
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "500Mi"
-              cpu: "500m"
-  ---
-  
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: shoppingapi-service
-  spec:
-    selector:
-      app: shoppingapi
-    ports:
-    - protocol: TCP
-      port: 8080
+    spec:
+      containers:
+      - name: shoppingapi
+        image: shoppingnewmanacr.azurecr.io/shoppingapi:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: DatabaseSettings__ConnectionStaring
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-configmap
+              key: connection_string
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+      imagePullSecrets:
+      - name: acr-secret
+---
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingapi-service
+spec:
+  selector:
+    app: shoppingapi
+  ports:
+  - protocol: TCP
+    port: 8080
 </pre>
 
 <u>shoppingcliant.yaml</u>
@@ -1318,56 +1317,81 @@ In My case <br/>
 </pre>
 
 <pre>
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: shoppingclient-deployment
-    labels:
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppingclient-deployment
+  labels:
+    app: shoppingclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
       app: shoppingclient
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+  template:
+    metadata:
+      labels:
         app: shoppingclient
-    template:
-      metadata:
-        labels:
-          app: shoppingclient
-      spec:
-        containers:
-        - name: shoppingclient
-          image: shoppingnewmanacr.azurecr.io/shoppingclient:v1
-          imagePullPolicy: IfNotPresent
-          imagePullSecret:
-          - name: acr-secret
-          ports:
-          - containerPort: 8080
-          env:
-          - name: ASPNETCORE_ENVIRONMENT
-            value: Development
-          - name: ShoppingAPIUrl
-            valueFrom:
-              configMapKeyRef:
-                name: shoppingapi-configmap
-                key: shoppingapi-url
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "500Mi"
-              cpu: "500m"
-  ---
-  
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: shoppingclient-service
-  spec:
-    type: LoadBalancer
-    selector:
-      app: shoppingclient
-    ports:
-    - protocol: TCP
-      port: 8080
+    spec:
+      containers:
+      - name: shoppingclient
+        image: shoppingnewmanacr.azurecr.io/shoppingclient:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: ShoppingAPIUrl
+          valueFrom:
+            configMapKeyRef:
+              name: shoppingapi-configmap
+              key: shoppingapi-url
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+      imagePullSecrets:
+      - name: acr-secret
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingclient-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: shoppingclient
+  ports:
+  - protocol: TCP
+    port: 8080
 </pre>
+
+
+- Check the current context
+![image](https://github.com/user-attachments/assets/820f2dbd-a872-47a0-9c95-68dbfd27b834)
+
+- If we have more than one context we can use
+  <pre>
+    kubectl config use-context [ContextName]
+  </pre>
+  
+- Now weneed to run all yaml file in the aks cluster
+  ![image](https://github.com/user-attachments/assets/8443f7a0-7c66-490a-9012-3447f6ecf02c)
+
+  Here we are running all files in the aks doirectory<br/>
+
+  Noew <b>kubectl get all</b> returns the following recoreces
+
+  ![image](https://github.com/user-attachments/assets/41c6ba2d-4b00-44d2-b1d4-5c8f688e1a58)
+
+  - Now if we get service details by running <b> kubectl get svc</b> we'll bget service details with external ip address:
+    ![image](https://github.com/user-attachments/assets/d674061d-c5e6-4040-ab46-735cd8c67238)
+
+
+
+  
