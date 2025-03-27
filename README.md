@@ -1207,4 +1207,167 @@ kubectl get nodes
 
 ![image](https://github.com/user-attachments/assets/9e8f4f8d-865f-427a-96b3-73e816c1a9d5)
 
+<b>Step 12:Run application in Azure Kubernetes Services</b><br/>
+1. Update Kubernetes manifest yaml file
+2. Tun the application
+3. Test Application
 
+- Update Kubernetes manifest file with <b>login server name <b>shoppingnewmanacr.azurecr.io</b>
+- We need to update the image repository in shoppingapi.yaml and shoppingclient.yaml as per azure kubernetes repository. <br/>
+We now have the dockerhub repository configuration in the k8s folder we need to move it to aks folder and change the configuration<br/>
+- Listing repository
+  <pre>
+    az acr repository list --name shoppingnewmanacr --output table
+  </pre>
+  ![image](https://github.com/user-attachments/assets/7b3b0717-09af-4f42-9277-8785768a78c6)
+
+<b>Step 13:Create Image pull secret for ACR container</b><br/>
+In order to create pull secret we need to provide <b>Service principal Id and registry url</b> <br/>
+1. Get login server name:
+<pre>
+  az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+</pre>
+![image](https://github.com/user-attachments/assets/18e53481-51f5-4917-98cf-6daba40df6a4)
+
+2. Collect ACR User name and Password from the portal
+![image](https://github.com/user-attachments/assets/76ebbd98-5f66-4e81-a9d5-a54dde0c8984)
+
+In My case <br/>
+<b>User Name: shoppingnewmanacr</b>  <br/>
+<b>Password : 3FAHb78RisMLdRw2If4Sm8pZQV8+T6etpLfLuzkvq2+ACRDafvb6 </b> <br/>
+
+3. Create Secret
+   <pre>
+     kubectl create secret docker-registry acr-secret --docker-server=shoppingnewmanacr.azurecr.io --docker-username=shoppingnewmanacr --docker-password=3FAHb78RisMLdRw2If4Sm8pZQV8+T6etpLfLuzkvq2+ACRDafvb6 --docker-email=croosnewman@gmail.com
+   </pre>
+![image](https://github.com/user-attachments/assets/69b84a38-7446-49b9-ac05-94b00935822a)
+
+<b>Step 14:Modify the deployment file</b><br/>
+- Copy all k8s file to aks folder
+- We change shoppingapi.yaml and shoppingclient.yaml and change Image and imagePullSecret as follows:
+- Change are in <b>Deployment section for adding image name and imagePullSecret </b> and <b>in Service section to change local Kubernetes setting to clude Kubernetes, We use NodePort for local setting</b>
+- We remove Type, Noreport and target port
+  
+  <u>shoppingapi.yaml</u>
+  <pre>
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: shoppingapi-deployment
+    labels:
+      app: shoppingapi
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: shoppingapi
+    template:
+      metadata:
+        labels:
+          app: shoppingapi
+      spec:
+        containers:
+        - name: shoppingapi
+          image: shoppingnewmanacr.azurecr.io/shoppingapi:v1
+          imagePullPolicy: IfNotPresent
+          imagePullSecret:
+          - name: acr-secret
+          ports:
+          - containerPort: 8080
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: DatabaseSettings__ConnectionStaring
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-configmap
+                key: connection_string
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+  ---
+  
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: shoppingapi-service
+  spec:
+    selector:
+      app: shoppingapi
+    ports:
+    - protocol: TCP
+      port: 8080
+
+</pre>
+
+<u>shoppingcliant.yaml</u>
+
+- We use shoppingapi url in shoppingcloient using shoppingapi-configmap.yaml, so before we change shoppingclient.yaml shopping-configmap.yaml
+- Here we removed port for the shopping-service
+<pre>
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: shoppingapi-configmap
+  data:
+    shoppingapi-url: http://shoppingapi-service
+</pre>
+
+<pre>
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: shoppingclient-deployment
+    labels:
+      app: shoppingclient
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: shoppingclient
+    template:
+      metadata:
+        labels:
+          app: shoppingclient
+      spec:
+        containers:
+        - name: shoppingclient
+          image: shoppingnewmanacr.azurecr.io/shoppingclient:v1
+          imagePullPolicy: IfNotPresent
+          imagePullSecret:
+          - name: acr-secret
+          ports:
+          - containerPort: 8080
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ShoppingAPIUrl
+            valueFrom:
+              configMapKeyRef:
+                name: shoppingapi-configmap
+                key: shoppingapi-url
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+  ---
+  
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: shoppingclient-service
+  spec:
+    type: LoadBalancer
+    selector:
+      app: shoppingclient
+    ports:
+    - protocol: TCP
+      port: 8080
+</pre>
