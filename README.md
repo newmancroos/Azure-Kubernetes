@@ -1,5 +1,4 @@
 # Azure-Kubernetes
-Udemy Course
 
 Course reference : https://github.com/aspnetrun/run-devops
 
