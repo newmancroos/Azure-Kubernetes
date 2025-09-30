@@ -123,6 +123,8 @@ This command will insert two records into Products table.
 - Stop all containers
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
 
+## To practice Kubernetes, we can download and install MiniKube. It is work on top of Docker
+
 
 ## Kubernetes (K8s)
 
