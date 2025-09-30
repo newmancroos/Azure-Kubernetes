@@ -125,6 +125,8 @@ This command will insert two records into Products table.
 
 ## To practice Kubernetes, we can download and install MiniKube. It is work on top of Docker
 
+* Websire for Down load https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download 
+* To start minukube after install : **minikube start**
 
 ## Kubernetes (K8s)
 
