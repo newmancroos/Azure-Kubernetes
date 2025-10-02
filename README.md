@@ -1377,7 +1377,10 @@ spec:
     port: 8080
 </pre>
 
-
+- Get Rreplica set, Gives number of replicaa and Disire/Current/Ready/Age status:
+  <pre>
+    kubectl get rs
+  </pre>
 - Check the current context
 ![image](https://github.com/user-attachments/assets/820f2dbd-a872-47a0-9c95-68dbfd27b834)
 
