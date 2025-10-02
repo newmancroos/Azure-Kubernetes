@@ -652,6 +652,12 @@ spec:
 ![image](https://github.com/user-attachments/assets/81a96747-0ca5-48e0-b173-0e91796744c2)
 
 
+- We can increse the replca count directly from kubectl command without changing the yaml file:
+<pre>
+  kubectl scale replicaset |replicaName| --replicas=5
+</pre>
+
+
 ![image](https://github.com/user-attachments/assets/1020f019-a3e9-4562-9975-681e57f3796a)
 
 ## Adding service definition
