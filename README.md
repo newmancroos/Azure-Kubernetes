@@ -1427,19 +1427,40 @@ spec:
           metadata:
             name: My-Service
           spec:
-            type: ClusterIP   # If we are not giving any type meaning it is cluster Ip
+            type: ClusterIP
             selector:
               app: my-app
             ports:
             - port: 80 # this is service port number
               targetPort: 8080 # Pod port number
+              nodePort: 30007 # If know the Node Ip and this port, external user can connect to the service
         </pre>
 
         <img width="602" height="355" alt="image" src="https://github.com/user-attachments/assets/b9856acf-dc3d-4d26-b10d-1ec980e208a8" />
 
-        * **Node Port**
-          
         
+          
+        <img width="726" height="329" alt="image" src="https://github.com/user-attachments/assets/37ac0d86-3d50-4b3f-adb7-c402647fafab" />
+
+
+        ### Note: Node Port doesnot used in production but only in test. Node port has a range from 30000 - 32767.
+
+    - **Load Balancer**   : When we create Load Balanceer tyoe service, automatically AWS side or Azure side there will br a Load Balancer created, so we can access the services through this load balancer.
+
+
+      <img width="751" height="341" alt="image" src="https://github.com/user-attachments/assets/cbacea19-ae56-4758-8e46-79b5ce18be77" />
+
+
+<img width="720" height="435" alt="image" src="https://github.com/user-attachments/assets/fc26f273-668f-42c4-83d4-d4f9d8af0743" />
+
+
+- If we want to access an external api end-point from a pod we can use ExternalName service.
+
+<img width="524" height="330" alt="image" src="https://github.com/user-attachments/assets/71f5e6cc-660a-40d4-a89d-3dbe133cfe3c" />
+
+
+- 
+
 
 
         
