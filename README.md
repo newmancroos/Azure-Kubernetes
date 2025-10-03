@@ -1421,5 +1421,23 @@ spec:
 
          Here Java applicationa and MySql will have Cluster Ip
 
+        <pre>
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: My-Service
+          spec:
+            type: ClusterIP   # If we are not giving any type meaning it is cluster Ip
+            selector:
+              app: my-app
+            ports:
+            - port: 80 # this is service port number
+              targetPort: 8080 # Pod port number
+        </pre>
+
+        <img width="602" height="355" alt="image" src="https://github.com/user-attachments/assets/b9856acf-dc3d-4d26-b10d-1ec980e208a8" />
+        
+
+
         
 
