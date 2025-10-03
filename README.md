@@ -723,6 +723,10 @@ Once agian run the kubectl apply command will create the service.
 ![image](https://github.com/user-attachments/assets/8612d207-ddcd-457f-b0d1-44905fa6f8f5)
 
 
+## How service get end-point of a POD  and when Pod getting deleted how end=point getting updated?
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/130515d9-cc9e-4861-9eef-95902ff57a92" />
+
+
 To get the service end point we can run kubectl describe service [serviceName]  --> here service name is mongo-service.
 
 ![image](https://github.com/user-attachments/assets/a2619f4d-f7aa-451e-a2e1-6c7ff96499e2)
