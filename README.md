@@ -1413,4 +1413,13 @@ spec:
 
 
 
-  
+  ## Type of services in Kubernetes
+
+  - There are two types of servoce
+      * Cluster Ip Server - We can communicate within cluster that means within Pods or between more Pods in the same cliuster. 
+         <img width="595" height="392" alt="image" src="https://github.com/user-attachments/assets/1ae29ccd-3763-48b3-8c56-bf21b5eb79b5" />
+
+         Here Java applicationa and MySql will have Cluster Ip
+
+        
+
