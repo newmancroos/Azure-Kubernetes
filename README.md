@@ -1481,9 +1481,16 @@ spec:
 **Kubelet**  - It is an command interface that monitor, create or remove container by communicating woth Container Runtime <br/>
 **Container Runtime**  - This create remove container by getting instruction from Kublet <br/>
 
+### What is Pod?
 
-  
-  
+<p> 
+  - All container we creates in the worker node will be created in side a Pod. <br/>
+  - A Pod has **Network** and **Storage** to handle the state of the pod. <br/>
+  - Each pod has its own IP address <br/>
+  - When we need to commucate between Pods we can use the pods Ip address <br/>
+  - A Pod may have more than one containers so communicating with container within a pod doesn;t need  Ip address. <br/>
+  - In real time a pod will have only one container. because auto scalling or if we have currupted container, removes entire pod, if we use more than one containers all the containers within a pod will be removed, even some containers working fine. 
+</p>
 
 
 
