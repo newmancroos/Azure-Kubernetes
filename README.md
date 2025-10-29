@@ -1471,15 +1471,15 @@ spec:
 
 ### Mastr Node
 
-**Controller Manager** - Maintains the state of the worker node. Get data from ETCD and check the states of all worker nodes
-**ETCD**   - This is a database, stores all the configuration and setting related to nodes and pods.
-**Scheduler**   - It will initiate the creation or removal process by communicating with API Server
-**API Server**  - It is communicate with Worker node when threre is a request to Create or remove or stat check
+**Controller Manager** - Maintains the state of the worker node. Get data from ETCD and check the states of all worker nodes <br/>
+**ETCD**   - This is a database, stores all the configuration and setting related to nodes and pods. <br/>
+**Scheduler**   - It will initiate the creation or removal process by communicating with API Server <br/>
+**API Server**  - It is communicate with Worker node when threre is a request to Create or remove or stat check <br/>
 
 ### Worker Node
 
-**Kubelet**  - It is an command interface that monitor, create or remove container by communicating woth Container Runtime
-**Container Runtime**  - This create remove container by getting instruction from Kublet
+**Kubelet**  - It is an command interface that monitor, create or remove container by communicating woth Container Runtime <br/>
+**Container Runtime**  - This create remove container by getting instruction from Kublet <br/>
 
 
   
