@@ -1459,7 +1459,14 @@ spec:
 <img width="524" height="330" alt="image" src="https://github.com/user-attachments/assets/71f5e6cc-660a-40d4-a89d-3dbe133cfe3c" />
 
 
-- 
+## Kubernetes Notes from another source
+
+* Kubernetes contain two nodes:
+      - Master Node
+      - Worker Node
+
+  
+
 
 
 
