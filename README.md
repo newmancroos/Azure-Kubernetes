@@ -1461,10 +1461,28 @@ spec:
 
 ## Kubernetes Notes from another source
 
-* Kubernetes contain two nodes:
-      - Master Node
-      - Worker Node
+* Kubernetes contain two nodes:<br/>
+      - Master Node <br/>
+      - Worker Node <br/>
 
+      
+<img width="692" height="392" alt="image" src="https://github.com/user-attachments/assets/075e276e-ad31-47bc-9d2a-02e928ebab15" />
+
+
+### Mastr Node
+
+**Controller Manager** - Maintains the state of the worker node. Get data from ETCD and check the states of all worker nodes
+**ETCD**   - This is a database, stores all the configuration and setting related to nodes and pods.
+**Scheduler**   - It will initiate the creation or removal process by communicating with API Server
+**API Server**  - It is communicate with Worker node when threre is a request to Create or remove or stat check
+
+### Worker Node
+
+**Kubelet**  - It is an command interface that monitor, create or remove container by communicating woth Container Runtime
+**Container Runtime**  - This create remove container by getting instruction from Kublet
+
+
+  
   
 
 
