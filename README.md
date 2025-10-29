@@ -1489,7 +1489,7 @@ spec:
   - Each pod has its own IP address <br/>
   - When we need to commucate between Pods we can use the pods Ip address <br/>
   - A Pod may have more than one containers so communicating with container within a pod doesn;t need  Ip address. <br/>
-  - In real time a pod will have only one container. because auto scalling or if we have currupted container, removes entire pod, if we use more than one containers all the containers within a pod will be removed, even some containers working fine. 
+  - In real time a pod will have only one container. because auto scalling or if we have currupted container, removes entire pod, if we use more than one containers all the containers within a pod will be removed, even some containers working fine. Still if we have tightly coiupled applications, we can create them in a single Pod
 </p>
 
 
