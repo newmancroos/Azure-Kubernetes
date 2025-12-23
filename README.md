@@ -1495,5 +1495,9 @@ spec:
 
 
 
-        
+## Ingress
+
+<img width="807" height="452" alt="image" src="https://github.com/user-attachments/assets/4f180041-204b-460d-a470-d15522f4913e" />
+
+It is a gateway that all the incoming request coming to Ingress and Ingres will routed it to the Service as per route.
 
