@@ -1501,3 +1501,7 @@ spec:
 
 It is a gateway that all the incoming request coming to Ingress and Ingres will routed it to the Service as per route.
 
+
+<img width="1185" height="732" alt="image" src="https://github.com/user-attachments/assets/38315419-73eb-4945-891f-50a6c0e85cbd" />
+
+
