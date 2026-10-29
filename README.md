@@ -1,7 +1,7 @@
 # Azure-Kubernetes
 Helpful Easy explanation : https://www.youtube.com/watch?v=8c4oEuANkTQ&list=PL1yVd92q9OP6305trQ-7q0fyI_sRM9tZa
 
-Using Azure Cluster and local tool **lens**.
+Using Azure Cluster and local tool **lens** : https://www.youtube.com/watch?v=YlR9AkDJMMA&list=PL9aNQqB-xjbAjGjkAKuydrYa8ZDM4TcI7
 
 https://www.youtube.com/watch?v=aiUrjgJjLOw
 ![image](https://github.com/user-attachments/assets/9a2017f4-60bc-4715-a144-c687e46873c8)
