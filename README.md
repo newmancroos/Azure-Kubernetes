@@ -1,9 +1,17 @@
 # Azure-Kubernetes
-Udemy Course
+Helpful Easy explanation : https://www.youtube.com/watch?v=8c4oEuANkTQ&list=PL1yVd92q9OP6305trQ-7q0fyI_sRM9tZa
+
+
+https://www.youtube.com/watch?v=aiUrjgJjLOw
+![image](https://github.com/user-attachments/assets/9a2017f4-60bc-4715-a144-c687e46873c8)
+
 
 Course reference : https://github.com/aspnetrun/run-devops
 
 ![image](https://github.com/user-attachments/assets/edf72745-952f-4c95-96bf-61724d289611)
+
+<img width="489" height="454" alt="image" src="https://github.com/user-attachments/assets/8e5ca94f-2908-4444-85cb-ac919f1229c8" />
+
 
 ![image](https://github.com/user-attachments/assets/a774c050-3e16-4178-a65f-92c3f0f6256b)
 
@@ -121,6 +129,10 @@ This command will insert two records into Products table.
 - Stop all containers
      * docker-compose -f docker-compose.yml -f docker-compose.override.yml down
 
+## To practice Kubernetes, we can download and install MiniKube. It is work on top of Docker
+
+* Websire for Down load https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download 
+* To start minukube after install : **minikube start**
 
 ## Kubernetes (K8s)
 
@@ -646,6 +658,12 @@ spec:
 ![image](https://github.com/user-attachments/assets/81a96747-0ca5-48e0-b173-0e91796744c2)
 
 
+- We can increse the replca count directly from kubectl command without changing the yaml file:
+<pre>
+  kubectl scale replicaset |replicaName| --replicas=5
+</pre>
+
+
 ![image](https://github.com/user-attachments/assets/1020f019-a3e9-4562-9975-681e57f3796a)
 
 ## Adding service definition
@@ -709,6 +727,10 @@ Yaml file with deployment and service is as follows:
 Once agian run the kubectl apply command will create the service.
 
 ![image](https://github.com/user-attachments/assets/8612d207-ddcd-457f-b0d1-44905fa6f8f5)
+
+
+## How service get end-point of a POD  and when Pod getting deleted how end=point getting updated?
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/130515d9-cc9e-4861-9eef-95902ff57a92" />
 
 
 To get the service end point we can run kubectl describe service [serviceName]  --> here service name is mongo-service.
@@ -1371,7 +1393,10 @@ spec:
     port: 8080
 </pre>
 
-
+- Get Rreplica set, Gives number of replicaa and Disire/Current/Ready/Age status:
+  <pre>
+    kubectl get rs
+  </pre>
 - Check the current context
 ![image](https://github.com/user-attachments/assets/820f2dbd-a872-47a0-9c95-68dbfd27b834)
 
@@ -1394,4 +1419,95 @@ spec:
 
 
 
-  
+  ## Type of services in Kubernetes
+
+  - There are two types of servoce
+      * **Cluster Ip Server** - We can communicate within cluster that means within Pods or between more Pods in the same cliuster. 
+         <img width="595" height="392" alt="image" src="https://github.com/user-attachments/assets/1ae29ccd-3763-48b3-8c56-bf21b5eb79b5" />
+
+         Here Java applicationa and MySql will have Cluster Ip
+
+        <pre>
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: My-Service
+          spec:
+            type: ClusterIP
+            selector:
+              app: my-app
+            ports:
+            - port: 80 # this is service port number
+              targetPort: 8080 # Pod port number
+              nodePort: 30007 # If know the Node Ip and this port, external user can connect to the service
+        </pre>
+
+        <img width="602" height="355" alt="image" src="https://github.com/user-attachments/assets/b9856acf-dc3d-4d26-b10d-1ec980e208a8" />
+
+        
+          
+        <img width="726" height="329" alt="image" src="https://github.com/user-attachments/assets/37ac0d86-3d50-4b3f-adb7-c402647fafab" />
+
+
+        ### Note: Node Port doesnot used in production but only in test. Node port has a range from 30000 - 32767.
+
+    - **Load Balancer**   : When we create Load Balanceer tyoe service, automatically AWS side or Azure side there will br a Load Balancer created, so we can access the services through this load balancer.
+
+
+      <img width="751" height="341" alt="image" src="https://github.com/user-attachments/assets/cbacea19-ae56-4758-8e46-79b5ce18be77" />
+
+
+<img width="720" height="435" alt="image" src="https://github.com/user-attachments/assets/fc26f273-668f-42c4-83d4-d4f9d8af0743" />
+
+
+- If we want to access an external api end-point from a pod we can use ExternalName service.
+
+<img width="524" height="330" alt="image" src="https://github.com/user-attachments/assets/71f5e6cc-660a-40d4-a89d-3dbe133cfe3c" />
+
+
+## Kubernetes Notes from another source
+
+* Kubernetes contain two nodes:<br/>
+      - Master Node <br/>
+      - Worker Node <br/>
+
+      
+<img width="692" height="392" alt="image" src="https://github.com/user-attachments/assets/075e276e-ad31-47bc-9d2a-02e928ebab15" />
+
+
+### Mastr Node
+
+**Controller Manager** - Maintains the state of the worker node. Get data from ETCD and check the states of all worker nodes <br/>
+**ETCD**   - This is a database, stores all the configuration and setting related to nodes and pods. <br/>
+**Scheduler**   - It will initiate the creation or removal process by communicating with API Server <br/>
+**API Server**  - It is communicate with Worker node when threre is a request to Create or remove or stat check <br/>
+
+### Worker Node
+
+**Kubelet**  - It is an command interface that monitor, create or remove container by communicating woth Container Runtime <br/>
+**Container Runtime**  - This create remove container by getting instruction from Kublet <br/>
+
+### What is Pod?
+
+<p> 
+  - All container we creates in the worker node will be created in side a Pod. <br/>
+  - A Pod has **Network** and **Storage** to handle the state of the pod. <br/>
+  - Each pod has its own IP address <br/>
+  - When we need to commucate between Pods we can use the pods Ip address <br/>
+  - A Pod may have more than one containers so communicating with container within a pod doesn;t need  Ip address. <br/>
+  - In real time a pod will have only one container. because auto scalling or if we have currupted container, removes entire pod, if we use more than one containers all the containers within a pod will be removed, even some containers working fine. Still if we have tightly coiupled applications, we can create them in a single Pod
+</p>
+
+
+
+
+## Ingress
+
+<img width="807" height="452" alt="image" src="https://github.com/user-attachments/assets/4f180041-204b-460d-a470-d15522f4913e" />
+
+It is a gateway that all the incoming request coming to Ingress and Ingres will routed it to the Service as per route.
+
+
+<img width="1185" height="732" alt="image" src="https://github.com/user-attachments/assets/38315419-73eb-4945-891f-50a6c0e85cbd" />
+
+
